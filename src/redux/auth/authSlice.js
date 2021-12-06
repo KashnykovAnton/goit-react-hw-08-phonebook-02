@@ -10,126 +10,76 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isAuth: false,
+  isLoading: false,
+  error: null,
+  isFetchingCurrent: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  // initialState: {
-  //   user: { name: null, email: null },
-  //   token: null,
-  //   // error: null,
-  //   // isLoading: false,0
-  //   isAuth: false,
-  // },
-  // reducers: {},
   extraReducers: {
-    // [signupThunk.pending](state, action) {
-    //   console.log(action);
-    //   state.auth.isLoading = true;
-    //   state.auth.error = null;
-    // },
+    [signupThunk.pending](state) {
+      state.isLoading = true;
+      state.error = null;
+    },
     [signupThunk.fulfilled](state, action) {
-      console.log(action);
-
-      state.auth.user = action.payload.user;
-      state.auth.token = action.payload.token;
-      // state.auth.isLoading = false;
-      state.auth.isAuth = true;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoading = false;
+      state.isAuth = true;
     },
-    // [signupThunk.rejected](state, action) {
-    //   console.log(action);
+    [signupThunk.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.error.message;
+    },
 
-    //   state.auth.isLoading = false;
-    //   state.auth.error = action.payload;
-    // },
-    // [loginThunk.pending](state, action) {
-    //   console.log(action);
-
-    //   state.auth.isLoading = true;
-    //   state.auth.error = null;
-    // },
+    [loginThunk.pending](state) {
+      state.isLoading = true;
+      state.error = null;
+    },
     [loginThunk.fulfilled](state, action) {
-      console.log(action.payload);
-      console.log(state.auth);
-
-      state.auth.user = action.payload.user;
-      state.auth.token = action.payload.token;
-      // state.auth.isLoading = false;
-      state.auth.isAuth = true;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoading = false;
+      state.isAuth = true;
     },
-    // [loginThunk.rejected](state, action) {
-    //   console.log(state);
-    //   console.log(action);
-    //   console.log(action.error.message);
-    //   // state.auth.error = action.error.message;
+    [loginThunk.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.error.message;
+    },
 
-    //   // state.auth.isLoading = false;
-    //   // state.auth.error = action.payload;
-    // },
-    // [getCurrentUserThunk.pending](state, action) {
-    //   console.log(action);
-
-    //   state.auth.isLoading = true;
-    //   state.auth.error = null;
-    // },
+    [getCurrentUserThunk.pending](state) {
+      state.isFetchingCurrent = true;
+      state.isLoading = true;
+      state.error = null;
+    },
     [getCurrentUserThunk.fulfilled](state, action) {
-      console.log(action);
-
-      state.auth.user = action.payload;
-      state.auth.isAuth = true;
-
-      // if (action.payload.message) {
-      //   return {
-      //     ...state,
-      //     isLoading: false,
-      //     isAuth: false,
-      //     error: action.payload,
-      //   };
-      // }
-      // return {
-      //   ...state,
-      //   user: action.payload,
-      //   isLoading: false,
-      //   isAuth: true,
-      // };
+      state.user = action.payload;
+      state.isAuth = true;
+      state.isLoading = false;
+      state.isFetchingCurrent = false;
     },
-    // [getCurrentUserThunk.rejected](state, action) {
-    //   console.log(action);
-    //   // state.auth.isLoading = false;
-    //   // state.auth.isAuth = false;
-    //   // state.auth.error = action.error.message;
-    // },
-    // [logoutThunk.pending](state, action) {
-    //   console.log(action);
-
-    //   state.auth.isLoading = true;
-    //   state.auth.error = null;
-    // },
-    [logoutThunk.fulfilled](state, action) {
-      console.log(action);
-
-      state.auth.user = { name: null, email: null };
-      state.auth.token = null;
-      // state.auth.error = null;
-      // state.auth.isLoading = false;
-      state.auth.isAuth = false;
-
-      // return {
-      //   user: { name: '', email: '' },
-      //   token: '',
-      //   error: null,
-      //   isLoading: false,
-      //   isAuth: false,
-      // };
+    [getCurrentUserThunk.rejected](state, action) {
+      state.isFetchingCurrent = false;
+      state.isLoading = false;
+      state.error = action.error.message;
     },
-    // [logoutThunk.rejected](state, action) {
-    //   console.log(action);
 
-    //   state.auth.isLoading = false;
-    //   state.auth.isAuth = false;
-    //   state.auth.error = action.payload;
-    // },
+    [logoutThunk.pending](state) {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [logoutThunk.fulfilled](state) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoading = false;
+      state.isAuth = false;
+    },
+    [logoutThunk.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.error.message;
+    },
   },
 });
 

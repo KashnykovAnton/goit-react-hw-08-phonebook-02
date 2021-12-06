@@ -5,8 +5,7 @@ import 'modern-normalize/modern-normalize.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router } from 'react-router-dom';
-// import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { store, persistore } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
@@ -14,9 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={'Loading Persist...'} persistor={persistore}>
-        <Router>
+        <BrowserRouter>
           <App />
-        </Router>
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>,

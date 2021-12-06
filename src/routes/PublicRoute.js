@@ -1,12 +1,20 @@
 import { Navigate } from 'react-router';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth';
 
-export function PublicRoute({ isAuth, component: PublicPage }) {
+// export function PublicRoute({ component: PublicPage }) {
+//   const isAuth = useSelector(contactsSelectors.getAuth);
+//   return <>{isAuth ? <Navigate to="/" /> : <PublicPage />}</>;
+// }
+
+export function PublicRoute({
+  redirectedTo = '/',
+  restricted = false,
+  component: PublicPage,
+}) {
+  const isAuth = useSelector(authSelectors.getAuth);
+  const shouldNavigate = isAuth && restricted;
   return (
-    <>
-      <h1>Public</h1>
-      {isAuth ? <Navigate to="/" /> : <PublicPage />}
-
-      {/* <Login /> */}
-    </>
+    <>{shouldNavigate ? <Navigate to={redirectedTo} /> : <PublicPage />}</>
   );
 }

@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.h1 {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  font-style: normal;
+  font-weight: bolt;
+  font-size: 48px;
+}
+
+.text {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  font-style: normal;
+  font-weight: bolt;
+  font-size: 24px;
+}
