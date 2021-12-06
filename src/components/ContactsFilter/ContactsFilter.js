@@ -1,3 +1,4 @@
+import styles from 'components/ContactsFilter/ContactsFilter.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,9 +16,17 @@ export default function ContactsFilter() {
   );
 
   return (
-    <div>
-      <label htmlFor={uuidv4()}>Find contacts by name</label>
-      <input type="text" value={filter} id={uuidv4()} onChange={changeFilter} />
+    <div className={styles.filter}>
+      <label className={styles.label} htmlFor={uuidv4()}>
+        Find contacts by name
+      </label>
+      <input
+        type="text"
+        className={styles.input}
+        value={filter}
+        id={uuidv4()}
+        onChange={changeFilter}
+      />
     </div>
   );
 }

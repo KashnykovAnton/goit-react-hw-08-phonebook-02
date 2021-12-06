@@ -1,8 +1,11 @@
+import styles from 'components/ContactsList/ContactsList.module.css';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
-import ContactsListItem from './ContactsListItem';
+import ContactsListItem from 'components/ContactsListItem/ContactsListItem';
 import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
 import { contactsSelectors } from 'redux/contacts';
+import LoaderSpin from 'components/Loader/Loader';
+import { toast } from 'react-toastify';
 
 export default function ContactsList() {
   const {
@@ -22,11 +25,11 @@ export default function ContactsList() {
     );
   }, [filter, data]);
 
-  if (error) return <h1>Sory, we have some troubles: {error.data}</h1>;
+  if (error) return toast.error(`There is an error: ${error}`);
 
   return (
     <>
-      {isFetching && <h1>Loading...</h1>}
+      {isFetching && <LoaderSpin />}
 
       <ul>
         {!isFetching &&
@@ -35,7 +38,7 @@ export default function ContactsList() {
           ))}
       </ul>
       {data.length === 0 && !isFetching && (
-        <h1>There are no contacts in phonebook!</h1>
+        <h1 className={styles.title}>There are no contacts in phonebook!</h1>
       )}
     </>
   );

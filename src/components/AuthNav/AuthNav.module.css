@@ -1,0 +1,25 @@
+.container {
+  width: 100vh;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+}
+
+.link {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  display: inline-block;
+  text-decoration: none;
+  margin: 28px;
+  font-weight: 700;
+  color: #333d44;
+}
+.activeLink {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  display: inline-block;
+  text-decoration: none;
+  margin: 28px;
+  font-weight: 700;
+  color: #e84a5f;
+}

@@ -1,0 +1,23 @@
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  font-size: 16px;
+  color: #333d44;
+}
+
+.input {
+  min-width: 230px;
+  padding: 8px 16px;
+  border: 2px solid #397fb4;
+  border-radius: 10px;
+}
+
+.input:focus {
+  outline: none !important;
+  border-color: #1565a4;
+}

@@ -1,0 +1,14 @@
+.section {
+  margin: 10px auto;
+  padding: 6px;
+  background-color: #87b6d6;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.title {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  text-align: center;
+  font-weight: 700;
+  color: #333d44;
+}

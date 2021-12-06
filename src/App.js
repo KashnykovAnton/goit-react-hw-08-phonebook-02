@@ -1,14 +1,16 @@
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from 'routes/PrivateRoute';
 import { PublicRoute } from 'routes/PublicRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, Suspense, lazy } from 'react';
 import { getCurrentUserThunk } from 'redux/auth/authThunks';
-import AppBar from 'components/AppBar';
-import Container from 'components/Container';
+import AppBar from 'components/AppBar/AppBar';
+import Container from 'components/Container/Container';
 import { authSelectors } from 'redux/auth';
-import LoaderSpin from './components/Loader';
+import LoaderSpin from 'components/Loader/Loader';
 
 const HomePage = lazy(() => import('Pages/HomePage/HomePage'));
 const ContactsPage = lazy(() =>
@@ -45,6 +47,7 @@ export default function App() {
       ) : (
         <>
           <AppBar />
+          <ToastContainer theme="colored" autoClose={2000} />
           <Suspense fallback={<LoaderSpin />}>
             <Routes>
               <Route

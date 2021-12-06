@@ -1,3 +1,4 @@
+import styles from 'components/ContactsListItem/ContactsListItem.module.css';
 import { useDeleteContactMutation } from 'redux/contacts/contactsSlice';
 
 export default function ContactsList({ id, name, number }) {
@@ -6,11 +7,12 @@ export default function ContactsList({ id, name, number }) {
   const onDelete = id => deleteContact(id);
 
   return (
-    <li>
-      <span>{name}:</span>
-      <span>{number}</span>
+    <li className={styles.item}>
+      <span className={styles.name}>{name}:</span>
+      <span className={styles.number}>{number}</span>
       <button
         type="button"
+        className={styles.button}
         id={id}
         onClick={() => {
           onDelete(id);

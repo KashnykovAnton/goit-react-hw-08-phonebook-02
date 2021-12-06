@@ -1,7 +1,7 @@
-import ContactsSection from 'components/ContactsSection';
-import ContactsList from 'components/ContactsList';
-import ContactsForm from 'components/ContactsForm';
-import ContactsFilter from 'components/ContactsFilter';
+import ContactsSection from 'components/ContactsSection/ContactsSection';
+import ContactsList from 'components/ContactsList/ContactsList';
+import ContactsForm from 'components/ContactsForm/ContactsForm';
+import ContactsFilter from 'components/ContactsFilter/ContactsFilter';
 
 export default function ContactsPage() {
   return (

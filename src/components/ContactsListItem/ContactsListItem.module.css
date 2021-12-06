@@ -1,0 +1,53 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px auto;
+  padding: 4px;
+}
+
+/* .contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+} */
+
+.name {
+  margin-right: 20px;
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  font-size: 20px;
+  color: #333d44;
+}
+
+.number {
+  margin-left: auto;
+  margin-right: 20px;
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  font-size: 20px;
+  color: #333d44;
+}
+
+.button {
+  min-width: 120px;
+  font-family: inherit;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: #397fb4;
+  color: #333d44;
+  /* margin: 20px; */
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #1565a4;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #cbd6ee;
+}

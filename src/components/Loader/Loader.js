@@ -1,4 +1,4 @@
-import styles from 'components/Loader.module.css';
+import styles from 'components/Loader/Loader.module.css';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 

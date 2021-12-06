@@ -1,4 +1,4 @@
-import styles from './Navigation.module.css';
+import styles from 'components/Navigation/Navigation.module.css';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -12,26 +12,12 @@ const Navigation = () => {
   const isAuth = useSelector(authSelectors.getAuth);
   return (
     <nav className={styles.nav}>
-      <NavLink
-        to="/"
-        exact="true"
-        className={setActive}
-        // className={navData =>
-        //   navData.isActive ? styles.activeLink : styles.link
-        // }
-      >
+      <NavLink to="/" exact="true" className={setActive}>
         HomePage
       </NavLink>
 
       {isAuth && (
-        <NavLink
-          to="/contacts"
-          exact="true"
-          className={setActive}
-          // className={navData =>
-          //   navData.isActive ? styles.activeLink : styles.link
-          // }
-        >
+        <NavLink to="/contacts" exact="true" className={setActive}>
           Contacts
         </NavLink>
       )}

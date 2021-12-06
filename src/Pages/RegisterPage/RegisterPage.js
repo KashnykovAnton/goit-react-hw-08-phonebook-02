@@ -1,7 +1,9 @@
+import styles from 'Pages/RegisterPage/RegisterPage.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signupThunk } from 'redux/auth/authThunks';
+// import { toast } from 'react-toastify';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -37,6 +39,7 @@ export default function Register() {
     setName('');
     setEmail('');
     setPassword('');
+    // toast.success('You have registered!');
   };
 
   const nameId = uuidv4();
@@ -44,42 +47,56 @@ export default function Register() {
   const passId = uuidv4();
   return (
     <>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor={nameId}>Name</label>
+      <h1 className={styles.title}>Register</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label className={styles.label} htmlFor={nameId}>
+          Name
+        </label>
         <input
+          className={styles.input}
           type="text"
           name="name"
-          //   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          //   title="The name can only consist of letters, apostrophe, dash and spaces"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="The name can only consist of letters, apostrophe, dash and spaces"
+          placeholder="Please enter name"
           required
           value={name}
           id={nameId}
           onChange={handleChange}
         />
-        <label htmlFor={mailId}>Mail</label>
+        <label className={styles.label} htmlFor={mailId}>
+          Mail
+        </label>
         <input
+          className={styles.input}
           type="mail"
           name="email"
-          //   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          //   title="Email must be in the following order: characters@characters.domain"
+          pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+.[a-z]"
+          title="Email must be in the following order: characters@characters.domain"
+          placeholder="Please enter email"
           required
           value={email}
           id={mailId}
           onChange={handleChange}
         />
-        <label htmlFor={passId}>Password</label>
+        <label className={styles.label} htmlFor={passId}>
+          Password
+        </label>
         <input
+          className={styles.input}
           type="password"
           name="password"
-          //   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          //   title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+          pattern="(?=.*\d).{6,}"
+          title="Must contain at least 6 or more characters"
+          placeholder="Please enter password"
           required
           value={password}
           id={passId}
           onChange={handleChange}
         />
-        <button type="submit">Register</button>
+        <button className={styles.button} type="submit">
+          Register
+        </button>
       </form>
     </>
   );
